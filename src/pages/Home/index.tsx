@@ -1,20 +1,37 @@
+import { useQuery } from "react-query";
+
 // Icons
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 // Components
 import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
+import { Spinner } from "@/components/Spinner";
 
-import { Container } from "./styles";
+// Requests
+import { getProducts } from "@/services/requests";
+
+import { Container, LoadingContainer } from "./styles";
+import { Product } from "@/@types/application";
 
 export function Home() {
+  const { isLoading, data } = useQuery<Product[]>("moviesData", getProducts);
+
+  if (isLoading) {
+    return (
+      <LoadingContainer>
+        <Spinner />
+      </LoadingContainer>
+    );
+  }
+
   return (
     <Container>
-      {[1, 2, 3, 4, 5, 6].map((number) => (
-        <Card.Container key={number}>
-          <Card.Image src="https://wefit-react-web-test.s3.amazonaws.com/shang-chi.png" />
-          <Card.Title text="Shang-chi" />
-          <Card.Price price={30.99} />
+      {data?.map((product) => (
+        <Card.Container key={product.id}>
+          <Card.Image src={product.image} />
+          <Card.Title text={product.title} />
+          <Card.Price price={product.price} />
 
           <Button.Container>
             <Button.Icon>

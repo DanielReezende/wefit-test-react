@@ -19,3 +19,11 @@ export const Container = styled.main`
     grid-template-columns: ${columns(3)};
   }
 `;
+
+export const LoadingContainer = styled.main`
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+`;
