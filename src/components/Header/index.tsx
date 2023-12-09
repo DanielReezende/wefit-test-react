@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Container, CarLink } from "./styles";
 import { MdShoppingBasket } from "react-icons/md";
-
+import { useCart } from "@/hooks/useCart";
 
 export function Header() {
+  const { cart } = useCart();
+  const cartSize = cart.length;
+
   return (
     <Container>
       <Link to="/">
@@ -14,7 +17,9 @@ export function Header() {
         <CarLink to="/cart">
           <div>
             <strong>Meu Carrinho</strong>
-            <span>0 itens</span>
+            <span>
+              {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
+            </span>
           </div>
 
           <MdShoppingBasket color="#fff" size={32} />
