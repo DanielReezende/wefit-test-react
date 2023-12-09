@@ -4,3 +4,8 @@ export type Product = {
   price: number;
   image: string;
 };
+
+
+export interface CartItemsAmount {
+  [key: number]: number;
+}
