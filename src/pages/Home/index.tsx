@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useQuery } from "react-query";
 
 // Icons
@@ -29,9 +30,12 @@ export function Home() {
     return sumAmount;
   }, {} as CartItemsAmount);
 
-  function handleAddProduct(id: number) {
-    addProduct(id);
-  }
+  const handleAddProduct = useCallback(
+    async (id: number) => {
+      await addProduct(id);
+    },
+    [addProduct]
+  );
 
   if (isLoading) {
     return (

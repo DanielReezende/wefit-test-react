@@ -7,8 +7,6 @@ export const Container = styled.main`
   padding: 1.6rem;
 
   ul {
-    list-style: none;
-
     display: grid;
     grid-template-columns: ${columns(1)};
     gap: 1.6rem;
