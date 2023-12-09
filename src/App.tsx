@@ -1,18 +1,25 @@
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import GlobalStyle from "./styles/global";
+// Routes
 import { Routers } from "./routes";
+
+// Custom Hooks
+import { CartProvider } from "./hooks/useCart";
+
+import GlobalStyle from "./styles/global";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Routers />
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Routers />
+        </BrowserRouter>
+      </CartProvider>
     </QueryClientProvider>
   );
 }
