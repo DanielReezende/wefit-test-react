@@ -1,7 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Theme, toast, ToastPosition } from "react-toastify";
 
-import { Product } from "@/@types/application";
+// Types
+import { ProductInCart } from "@/@types/application";
+
+// Requests
 import { getProduct } from "@/services/requests";
 
 interface CartProviderProps {
@@ -13,15 +16,13 @@ interface UpdateProductAmount {
   amount: number;
 }
 
-interface ProductInCart extends Product {
-  amount: number;
-}
-
 interface CartContextData {
   cart: ProductInCart[];
-  addProduct: (productId: number) => void;
+  isPurchased: boolean;
+  addProduct: (productId: number) => Promise<void>;
   removeProduct: (productId: number) => void;
   updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
+  finishPurchase: () => boolean;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -44,6 +45,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
     return [];
   });
+  const [isPurchased, setPurchased] = useState(false);
 
   const addProduct = async (productId: number) => {
     try {
@@ -76,7 +78,6 @@ export function CartProvider({ children }: CartProviderProps) {
 
       setCart(updatedCart);
       localStorage.setItem(dbKey, JSON.stringify(updatedCart));
-
     } catch {
       toast.error("Error ao adicionar o produto ao carrinho.", toastConfig);
     }
@@ -84,23 +85,80 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const removeProduct = (productId: number) => {
     try {
-      // TODO
+      const productExists = cart.some(
+        (cartProduct) => cartProduct.id === productId
+      );
+
+      if (!productExists) {
+        toast.error("Erro na remoção do produto", toastConfig);
+        return;
+      }
+
+      const updatedCart = cart.filter((cartItem) => cartItem.id !== productId);
+
+      setCart(updatedCart);
+
+      sessionStorage.setItem(dbKey, JSON.stringify(updatedCart));
     } catch {
-      // TODO
+      toast.error("Error ao remover o produto ao carrinho.", toastConfig);
     }
   };
 
   const updateProductAmount = ({ productId, amount }: UpdateProductAmount) => {
     try {
-      // TODO
+      const productExists = cart.find(
+        (cartProduct) => cartProduct.id === productId
+      );
+
+      if (!productExists) {
+        toast.error("Erro na alteração de quantidade do produto");
+        return;
+      }
+
+      if (amount < 1) {
+        toast.error("Erro na alteração de quantidade do produto");
+        return;
+      }
+
+      const updatedCart = cart.map((cartItem) =>
+        cartItem.id === productId
+          ? {
+              ...cartItem,
+              amount: amount,
+            }
+          : cartItem
+      );
+      setCart(updatedCart);
+      sessionStorage.setItem(dbKey, JSON.stringify(updatedCart));
+
+      toast.success("Produto removido com successo.", toastConfig);
     } catch {
-      // TODO
+      toast.error("Erro na alteração de quantidade do produto", toastConfig);
     }
+  };
+
+  const finishPurchase = () => {
+    if (cart.length > 0) {
+      toast.success("Comprado finalizada", toastConfig);
+
+      setPurchased(true);
+      
+      return true;
+    }
+
+    return false;
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+      value={{
+        cart,
+        isPurchased,
+        addProduct,
+        removeProduct,
+        updateProductAmount,
+        finishPurchase,
+      }}
     >
       {children}
     </CartContext.Provider>
