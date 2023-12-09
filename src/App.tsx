@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import GlobalStyle from "./assets/styles/global";
+import GlobalStyle from "./styles/global";
 import { Routers } from "./routes";
 
 const queryClient = new QueryClient();
