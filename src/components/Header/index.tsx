@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Container, CarLink } from "./styles";
 import { MdShoppingBasket } from "react-icons/md";
 
@@ -5,7 +6,9 @@ import { MdShoppingBasket } from "react-icons/md";
 export function Header() {
   return (
     <Container>
-      <h2>WeMovies</h2>
+      <Link to="/">
+        <h2>WeMovies</h2>
+      </Link>
 
       <nav>
         <CarLink to="/cart">
