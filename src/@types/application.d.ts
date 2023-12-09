@@ -5,6 +5,11 @@ export type Product = {
   image: string;
 };
 
+export interface ProductInCart extends Product {
+  amount: number;
+}
+
+
 
 export interface CartItemsAmount {
   [key: number]: number;
