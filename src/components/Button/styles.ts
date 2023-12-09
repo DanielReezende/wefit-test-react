@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 
+export type ButtonVariant = "default" | "success";
+
 interface Props {
-  variant: "default" | "success";
+  variant: ButtonVariant;
 }
 
 export const Container = styled.button<Props>`

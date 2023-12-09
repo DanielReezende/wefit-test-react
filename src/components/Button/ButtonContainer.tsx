@@ -1,10 +1,18 @@
-import { Container } from "./styles";
+import { ButtonVariant, Container } from "./styles";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: 'default' | "success";
+  variant?: ButtonVariant;
 }
 
-export function ButtonContainer({ children, variant = "default" }: ButtonProps) {
-  return <Container variant={variant}>{children}</Container>;
+export function ButtonContainer({
+  children,
+  variant = "default",
+  ...rest
+}: ButtonProps) {
+  return (
+    <Container variant={variant} {...rest}>
+      {children}
+    </Container>
+  );
 }
