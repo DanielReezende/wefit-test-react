@@ -47,6 +47,8 @@ export default createGlobalStyle`
     width: 100%;
     max-width: 960px;
 
+    height: 100vmin;
+
     margin: 0 auto;
 
     display: flex;
@@ -73,13 +75,6 @@ export default createGlobalStyle`
       filter: brightness(0.8);
     }
 
-    &:disabled {
-      cursor: not-allowed;
-      
-      &:hover {
-        filter: brightness(1);
-      }
-    }
   }
 
   main {
