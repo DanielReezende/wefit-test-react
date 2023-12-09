@@ -139,7 +139,8 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const finishPurchase = () => {
     if (cart.length > 0) {
-      toast.success("Comprado finalizada", toastConfig);
+
+      console.log("Entrou aqui")
 
       setPurchased(true);
       
