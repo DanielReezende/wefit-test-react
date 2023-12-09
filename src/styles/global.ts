@@ -61,6 +61,10 @@ export default createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
 
+  ul {
+    list-style: none;
+  }
+
   button,
   a {
     text-decoration: none;
