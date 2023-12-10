@@ -77,7 +77,7 @@ export function CartProvider({ children }: CartProviderProps) {
       );
 
       setCart(updatedCart);
-      localStorage.setItem(dbKey, JSON.stringify(updatedCart));
+      sessionStorage.setItem(dbKey, JSON.stringify(updatedCart));
     } catch {
       toast.error("Error ao adicionar o produto ao carrinho.", { ...toastConfig });
     }
@@ -140,6 +140,10 @@ export function CartProvider({ children }: CartProviderProps) {
   const finishPurchase = () => {
     if (cart.length > 0) {
       setPurchased(true);
+
+      setCart([]);
+
+      sessionStorage.setItem(dbKey, JSON.stringify([]));
       
       return true;
     }
