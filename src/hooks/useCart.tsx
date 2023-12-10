@@ -99,6 +99,8 @@ export function CartProvider({ children }: CartProviderProps) {
       setCart(updatedCart);
 
       sessionStorage.setItem(dbKey, JSON.stringify(updatedCart));
+
+      toast.success("Produto removido com successo.", toastConfig);
     } catch {
       toast.error("Error ao remover o produto ao carrinho.", toastConfig);
     }
@@ -131,7 +133,7 @@ export function CartProvider({ children }: CartProviderProps) {
       setCart(updatedCart);
       sessionStorage.setItem(dbKey, JSON.stringify(updatedCart));
 
-      toast.success("Produto removido com successo.", toastConfig);
+      toast.success("Quantidade do produto alterada com successo.", toastConfig);
     } catch {
       toast.error("Erro na alteração de quantidade do produto", toastConfig);
     }
