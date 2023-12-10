@@ -82,6 +82,8 @@ export function Cart() {
   function handleFinishPurchase() {
     const isfinishedPuchase = finishPurchase();
 
+    console.log(isfinishedPuchase)
+
     return isfinishedPuchase
       ? navigate("/cart/success")
       : toast.error("Erro ao finalizar compra", {
@@ -169,7 +171,9 @@ export function Cart() {
           ))}
 
           <Table.Footer>
-            <Button.Container>Finalizar pedido</Button.Container>
+            <Button.Container onClick={handleFinishPurchase}>
+              Finalizar pedido
+            </Button.Container>
 
             <Total>
               <span>TOTAL</span>
