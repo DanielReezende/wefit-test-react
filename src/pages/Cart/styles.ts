@@ -13,8 +13,8 @@ export const Container = styled.main`
 export const EmptyContainer = styled.div`
   width: 100%;
 
-  background-color: var(--white-900);
-  border-radius: var(--border-radius);
+  background-color: ${({ theme }) => theme.white_900};
+  border-radius: ${({ theme }) => theme.border_radius};
 
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const EmptyContainer = styled.div`
   h1 {
     font-size: 2rem;
     line-height: 1.4;
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
   }
 
   img {
@@ -57,13 +57,13 @@ export const ImageAndTitle = styled.div`
     gap: 0.5rem;
 
     strong {
-      color: var(--blue-900);
+      color: ${({ theme }) => theme.blue_900};
       font-size: 1.4rem;
     }
 
     span {
       font-size: 1.6rem;
-      color: var(--blue-900);
+      color: ${({ theme }) => theme.blue_900};
       font-weight: bold;
     }
   }
@@ -103,7 +103,7 @@ export const TitleAndPrice = styled.div`
   gap: 1.2rem;
 
   strong {
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
     display: block;
     font-size: 1.4rem;
   }
@@ -111,7 +111,7 @@ export const TitleAndPrice = styled.div`
   span {
     display: block;
     font-size: 1.6rem;
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
     font-weight: bold;
   }
 `;
@@ -122,9 +122,9 @@ export const InputContainer = styled.div`
   gap: 0.8rem;
 
   input {
-    border: 1px solid var(--grey-200);
-    border-radius: var(--border-radius);
-    color: var(--blue-900);
+    border: 1px solid ${({ theme }) => theme.grey_200};
+    border-radius: ${({ theme }) => theme.border_radius};
+    color: ${({ theme }) => theme.blue_900};
     padding: 6px;
     width: 50px;
   }
@@ -136,7 +136,7 @@ export const ActionButton = styled.button`
   padding: 0.6rem;
 
   svg {
-    color: var(--blue-500);
+    color: ${({ theme }) => theme.blue_500};
     transition: color 0.2s;
   }
 `;
@@ -159,12 +159,12 @@ export const SubTotalContainer = styled.div`
 
   span {
     font-size: 1.4rem;
-    color: var(--grey-500);
+    color: ${({ theme }) => theme.grey_500};
     font-weight: bold;
   }
 
   strong {
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
     font-size: 1.6rem;
   }
 
@@ -185,12 +185,12 @@ export const Total = styled.div`
 
   span {
     font-size: 1.4rem;
-    color: var(--grey-500);
+    color: ${({ theme }) => theme.grey_500};
     font-weight: bold;
   }
 
   strong {
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
     font-size: 2.4rem;
     margin-left: 5px;
   }

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.article`
   width: 100%;
@@ -9,14 +9,12 @@ export const Container = styled.article`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius:  var(--border-radius);
+  border-radius: ${({ theme }) => theme.border_radius};
 
   gap: 0.8rem;
 
-  background: var(--white-900);
+  background: ${({ theme }) => theme.white_900};
 `;
-
-
 
 const appearOpacity = keyframes`
 from {
@@ -41,17 +39,15 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
-
 export const Title = styled.h1`
   font-size: 1.4rem;
   line-height: 1.4;
-  color: var(--grey-900);
+  color: ${({ theme }) => theme.grey_900};
 `;
-
 
 export const Price = styled.h3`
   font-size: 2rem;
   line-height: 1.6;
 
-  color: var(--blue-900);
+  color: ${({ theme }) => theme.blue_900};
 `;

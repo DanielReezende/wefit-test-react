@@ -19,18 +19,17 @@ export const Container = styled.button<Props>`
   font-weight: bold;
   text-transform: uppercase;
 
-  background: var(--blue-500);
-  color: var(--white-900);
+  background: ${({ theme }) => theme.blue_500};
+  color: ${({ theme }) => theme.white_900};
 
-  border-radius: var(--border-radius);
+  border-radius: ${({ theme }) => theme.border_radius};
 
   ${({ variant }) =>
     variant === "success" &&
     css`
-      background: var(--green-900);
+      background: ${({ theme }) => theme.green_900};
     `}
 `;
-
 
 export const IconContainer = styled.div`
   display: flex;
@@ -39,5 +38,5 @@ export const IconContainer = styled.div`
 
   font-size: 1.4rem;
 
-  color: var(--white-900);
+  color: ${({ theme }) => theme.white_900};
 `;

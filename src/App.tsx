@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ThemeProvider } from "styled-components";
 
 // Routes
 import { Routers } from "./routes";
@@ -7,6 +8,7 @@ import { Routers } from "./routes";
 // Custom Hooks
 import { CartProvider } from "./hooks/useCart";
 
+import { defaultTheme } from "./styles/themes/default";
 import GlobalStyle from "./styles/global";
 
 const queryClient = new QueryClient();
@@ -15,10 +17,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
-        <BrowserRouter>
-          <GlobalStyle />
-          <Routers />
-        </BrowserRouter>
+        <ThemeProvider theme={defaultTheme}>
+          <BrowserRouter>
+            <GlobalStyle />
+            <Routers />
+          </BrowserRouter>
+        </ThemeProvider>
       </CartProvider>
     </QueryClientProvider>
   );

@@ -12,19 +12,6 @@ to {
 `;
 
 export default createGlobalStyle`
-  :root {
-    --grey-900: #333333;
-    --grey-500: #999999;
-    --grey-200: #D9D9D9;
-     
-    --white-900: #FFFFFF; 
-
-    --blue-900: #2F2E41; 
-    --blue-500: #009EDD;
-
-    --green-900: #039B00;  
-    --border-radius: 4px;
-  }
 
   * {
     margin: 0;
@@ -38,8 +25,8 @@ export default createGlobalStyle`
 
   body {
     height: 100vh;
-    background: var(--blue-900);
-    color: var(--white-900);
+    background: ${({ theme }) => theme.blue_900};
+    color: ${({ theme }) => theme.white_900};
     -webkit-font-smoothing: antialiased;
   }
 
@@ -71,7 +58,7 @@ export default createGlobalStyle`
     border: 0;
     outline: none;
     cursor: pointer;
-    color: var(--white-900);
+    color: ${({ theme }) => theme.white_900};
 
     transition: all ease-in-out 0.3s;
 
@@ -85,5 +72,11 @@ export default createGlobalStyle`
     opacity: 1;
     transition: opacity .4s ease-in-out;
     animation: ${appearOpacity} 1s;
+  }
+
+  .Toastify__toast-body {
+    > div {
+      font-size: 1.6rem;
+    }
   }
 `;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.ul`
   width: 100%;
   padding: 2rem;
-  background: var(--white-900);
-  border-radius: var(--border-radius);
+  background: ${({ theme }) => theme.white_900};
+  border-radius: ${({ theme }) => theme.border_radius};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,7 +38,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderItem = styled.div`
-  color: var(--grey-500);
+  color: ${({ theme }) => theme.grey_500};
   text-align: left;
 
   text-transform: uppercase;
@@ -84,7 +84,7 @@ export const Footer = styled.footer`
 
   padding-top: 2rem;
 
-  border-top: 1px solid var(--grey-500);
+  border-top: 1px solid ${({ theme }) => theme.grey_500};
 
   > div {
     order: 1;

@@ -41,7 +41,7 @@ export const CarLink = styled(Link)`
 
     span {
       font-size: 1.2rem;
-      color: var(--grey-500);
+      color: ${({ theme }) => theme.grey_500};
     }
   }
 

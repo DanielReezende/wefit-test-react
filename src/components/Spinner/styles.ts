@@ -5,7 +5,7 @@ export const Component = styled.span`
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  border: 4px solid var(--blue-900);
+  border: 4px solid ${({ theme }) => theme.blue_900};
   background: conic-gradient(
     from 90deg at 50% 50%,
     rgba(128, 128, 128, 0.0001) -46.17deg,
@@ -20,14 +20,14 @@ export const Component = styled.span`
   &::before {
     position: absolute;
     content: "";
-    background: var(--blue-900);
+    background: ${({ theme }) => theme.blue_900};
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
     height: 70%;
     border-radius: 50%;
-    border: 4px solid var(--blue-900);
+    border: 4px solid ${({ theme }) => theme.blue_900};
   }
 
   @keyframes rotation {

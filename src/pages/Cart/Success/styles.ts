@@ -9,8 +9,8 @@ export const Container = styled.main`
 export const Wrapper = styled.div`
   width: 100%;
 
-  background-color: var(--white-900);
-  border-radius: var(--border-radius);
+  background-color: ${({ theme }) => theme.white_900};
+  border-radius: ${({ theme }) => theme.border_radius};
 
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   h1 {
     font-size: 2rem;
     line-height: 1.4;
-    color: var(--blue-900);
+    color: ${({ theme }) => theme.blue_900};
   }
 
   img {

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Theme, toast, ToastPosition } from "react-toastify";
+import { Theme, toast, ToastPosition, ToastContainer } from "react-toastify";
 
 // Types
 import { ProductInCart } from "@/@types/application";
@@ -79,7 +79,7 @@ export function CartProvider({ children }: CartProviderProps) {
       setCart(updatedCart);
       localStorage.setItem(dbKey, JSON.stringify(updatedCart));
     } catch {
-      toast.error("Error ao adicionar o produto ao carrinho.", toastConfig);
+      toast.error("Error ao adicionar o produto ao carrinho.", { ...toastConfig });
     }
   };
 
@@ -139,9 +139,6 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const finishPurchase = () => {
     if (cart.length > 0) {
-
-      console.log("Entrou aqui")
-
       setPurchased(true);
       
       return true;
@@ -162,6 +159,8 @@ export function CartProvider({ children }: CartProviderProps) {
       }}
     >
       {children}
+      
+      <ToastContainer />
     </CartContext.Provider>
   );
 }
